@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+echo "Updating.."
+git pull > /dev/null
+echo "Update Completed"
+read -p "Enter Change(comment): " comment
+git stage -A && git commit -m "$comment"
+echo "Uploading.."
+git pull
+echo "All Done!"
