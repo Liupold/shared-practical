@@ -13,7 +13,7 @@ no_of_div_y = 200 # (small divisions in graph paper (y))         200
 
 ##################################
 
-file_name = argv[1] if len(argv) > 2 else 'data.dat'
+file_name = argv[1] if len(argv) >= 2 else 'data.dat'
 if not os.path.isfile(file_name): raise FileNotFoundError(file_name + 'not found')
 
 x_array, y_array = np.loadtxt(file_name).transpose()
