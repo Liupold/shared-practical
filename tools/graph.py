@@ -46,19 +46,18 @@ print(f"Origin: { ['%.2E' % i for i  in origin]}")
 print(f"Scale x: {'%.2E' % scale_x} <Units>")
 print(f"Scale y: {'%.2E' % scale_y} <Units>")
 
-print('\n\n')
-print("X axis points:")
-for i in range(1, math.ceil(no_of_div_x / 10) + 1):
-    print(f"{i * 10} :{round(origin[0] + (i * 10) * scale_x, 2)}")
 print('\n')
+print("X axis points \tY axis points")
+for i in range(1, math.ceil(max(no_of_div_x, no_of_div_y) / 10) + 1):
+    if i * 10 <= no_of_div_x:
+        print(f"{i * 10} :{round(origin[0] + (i * 10) * scale_x, 2)}", end='')
+    else:
+        print('\t', end='')
+    if i * 10 <= no_of_div_y:
+        print(f"\t{i * 10} :{round(origin[1] + (i * 10) * scale_y, 2)}")
 
-print("Y axis points:")
-for i in range(1, math.ceil(no_of_div_y / 10) + 1):
-    print(f"{i * 10} :{round(origin[1] + (i * 10) * scale_y, 2)}")
-print('\n')
-
-
+print("\n\n##### Points #####")
 for x, y in zip(x_array, y_array):
     x_ = (x - origin[0]) / scale_x
     y_ = (y - origin[1]) / scale_y
-    print(f"Point{x, y}: [{int(round(x_))}, {int(round(y_))}]")
+    print(f"{x, y}: [{int(round(x_))}, {int(round(y_))}]")
