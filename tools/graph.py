@@ -1,3 +1,4 @@
+import clipboard
 import numpy as np
 from sys import argv
 import math
@@ -13,7 +14,14 @@ no_of_div_y = 200 # (small divisions in graph paper (y))         200
 
 ##################################
 
-file_name = argv[1] if len(argv) >= 2 else 'data.dat'
+if (len(argv) >= 2) and (argv[1] == '--clip'):
+    print("Reading From clipboard")
+    with open('data.dat', 'w') as f:
+        f.write(clipboard.paste())
+    file_name = 'data.dat'
+else:
+    file_name = argv[1] if len(argv) >= 2 else 'data.dat'
+
 if not os.path.isfile(file_name): raise FileNotFoundError(file_name + 'not found')
 
 x_array, y_array = np.loadtxt(file_name).transpose()
