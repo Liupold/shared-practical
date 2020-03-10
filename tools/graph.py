@@ -50,11 +50,11 @@ print('\n')
 print("X axis points \tY axis points")
 for i in range(1, math.ceil(max(no_of_div_x, no_of_div_y) / 10) + 1):
     if i * 10 <= no_of_div_x:
-        print(f"{i * 10} :{round(origin[0] + (i * 10) * scale_x, 2)}", end='')
+        print("{}: {:.2E}".format(i * 10, origin[0] + (i * 10) * scale_x), end='')
     else:
         print('\t', end='')
     if i * 10 <= no_of_div_y:
-        print(f"\t{i * 10} :{round(origin[1] + (i * 10) * scale_y, 2)}")
+        print("\t{}: {:.2E}".format(i * 10, origin[1] + (i * 10) * scale_y), end='\n')
 
 print("\n\n##### Points #####")
 for x, y in zip(x_array, y_array):
